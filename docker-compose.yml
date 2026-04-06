@@ -1,0 +1,25 @@
+services:
+  db:
+    image: mysql:8.0
+    container_name: concesionario_rmz
+    environment:
+      MYSQL_ROOT_PASSWORD: tu_contraseña
+      MYSQL_DATABASE: concesionario_rmz
+    ports:
+      - "3306:3306"
+    volumes:
+      - ./init.sql:/docker-entrypoint-initdb.d/init.sql
+      - db_data:/var/lib/mysql
+
+  app:
+    build: .
+    container_name: gescon_rmz  
+    ports:
+      - "3000:3000"
+    depends_on:
+      - db
+    environment:
+      - DB_HOST=db
+      - DB_PASS=${DB_PASS}
+volumes:
+  db_data:
