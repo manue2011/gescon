@@ -1,8 +1,8 @@
     const { Sequelize, DataTypes } = require('sequelize');
 
 // 1. Configuración de la conexión a la base de datos
-const sequelize = new Sequelize('concesionario_rmz', 'root', process.env.DB_PASS, {
-    host: process.env.DB_HOST || 'localhost',
+const sequelize = new Sequelize('concesionario_rmz', 'root', 'root', {
+    host: 'db', 
     dialect: 'mysql',
     port: 3306
 });
