@@ -8,7 +8,7 @@ const consultarCochesPorMarca = async (marca) => {
 const crearNuevoCoche = async (datosCoche) => {
     // LÓGICA DE NEGOCIO
     if (datosCoche.cilindrada <= 0 || !datosCoche.cilindrada) {
-        throw new Error("La cilindrada debe ser mayor que 0 [TEST]");
+        throw new Error("La cilindrada debe ser mayor que 0");
     }
     if (!datosCoche.marca || !datosCoche.modelo) {
         throw new Error("Faltan campos obligatorios");
