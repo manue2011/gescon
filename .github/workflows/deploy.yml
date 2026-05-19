@@ -55,7 +55,7 @@ jobs:
           host: ${{ secrets.AWS_HOST }}
           username: ubuntu
           key: ${{ secrets.SSH_PRIVATE_KEY }}
-          source: "docker-compose.yml"
+          source: "docker-compose.yml,init.sql"
           target: "/home/ubuntu/app/"
           
       - name: Desplegar contenedores en EC2
