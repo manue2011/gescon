@@ -3,7 +3,7 @@ services:
     image: mysql:8.0
     container_name: concesionario_rmz
     environment:
-      MYSQL_ROOT_PASSWORD: ${DB_PASS}
+      MYSQL_ROOT_PASSWORD: root
       MYSQL_DATABASE: concesionario_rmz
     ports:
       - "3306:3306"
@@ -20,6 +20,6 @@ services:
       - db
     environment:
       - DB_HOST=db
-      - DB_PASS=${DB_PASS}
+      - DB_PASS=root 
 volumes:
   db_data:
