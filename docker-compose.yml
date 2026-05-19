@@ -3,7 +3,7 @@ services:
     image: mysql:8.0
     container_name: concesionario_rmz
     environment:
-      MYSQL_ROOT_PASSWORD: tu_contraseña
+      MYSQL_ROOT_PASSWORD: ${DB_PASS}
       MYSQL_DATABASE: concesionario_rmz
     ports:
       - "3306:3306"
@@ -12,7 +12,7 @@ services:
       - db_data:/var/lib/mysql
 
   app:
-    build: .
+    image: pansete/gescon_rmz:latest
     container_name: gescon_rmz  
     ports:
       - "3000:3000"
