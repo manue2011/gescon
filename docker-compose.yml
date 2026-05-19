@@ -7,6 +7,9 @@ services:
       MYSQL_DATABASE: concesionario_rmz
     ports:
       - "3306:3306"
+    networks:
+      app_network:
+        ipv4_address: 172.18.0.2 
     volumes:
       - ./init.sql:/docker-entrypoint-initdb.d/init.sql
       - db_data:/var/lib/mysql
@@ -16,10 +19,20 @@ services:
     container_name: gescon_rmz  
     ports:
       - "3000:3000"
+    networks:
+      app_network:
+        ipv4_address: 172.18.0.3
     depends_on:
       - db
     environment:
-      - DB_HOST=db
-      - DB_PASS=root 
+      - DB_PASS=root
+
+networks:
+  app_network:
+    driver: bridge
+    ipam:
+      config:
+        - subnet: 172.18.0.0/16
+
 volumes:
   db_data:
